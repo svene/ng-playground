@@ -24,13 +24,11 @@ export class Level1Component {
 
   changePersonProperties() {
     const otherPerson = this.personProperties.firstName === sven.firstName ? bart : sven;
-    console.log(JSON.stringify(otherPerson));
     this.personProperties.firstName = otherPerson.firstName;
     this.personProperties.lastName = otherPerson.lastName;
   }
   changePersonRef() {
     const otherPerson = this.personObj.firstName === sven.firstName ? bart : sven;
-    console.log(JSON.stringify(otherPerson));
     this.personObj = otherPerson;
   }
 
