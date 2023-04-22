@@ -1,6 +1,13 @@
 <div class="level1">
   <div>Level 1</div>
   <button type="button" (click)="inc()">Increment</button>
+  <button type="button" (click)="changePersonProperties()">Change Person Properties</button>
+  <button type="button" (click)="changePersonRef()">Change Person Object</button>
+
   <div>counter: {{counter}}</div>
-  <app-level2 [counter]="counter"></app-level2>
+  <div>personProperties: {{personProperties | json}}</div>
+  <div>personRef: {{personObj | json}}</div>
+
+  <app-level2 [counter]="counter" [personProperties]="personProperties" [personObj]="personObj"></app-level2>
+  <app-level2on-push [counter]="counter" [personProperties]="personProperties" [personObj]="personObj"></app-level2on-push>
 </div>

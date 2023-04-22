@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
+import {Person} from "../model/person";
 
 @Component({
   selector: 'app-level2',
@@ -7,10 +8,17 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './level2.component.html',
   styleUrls: ['./level2.component.scss'],
+
 })
 export class Level2Component {
 
   @Input()
   counter: number = 99;
+
+  @Input()
+  personProperties: Person = {firstName: '', lastName: ''};
+
+  @Input()
+  personObj: Person = {firstName: '', lastName: ''};
 
 }
