@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import {Level2Component} from "../level2/level2.component";
 import {bart, sven} from "../model/person";
 import {Level2onPushComponent} from "../level2on-push/level2on-push.component";
+import {Level2setComponent} from "../level2set/level2set.component";
 
 @Component({
   selector: 'app-level1',
   standalone: true,
-  imports: [CommonModule, Level2Component, Level2onPushComponent],
+  imports: [CommonModule, Level2Component, Level2onPushComponent, Level2setComponent],
   templateUrl: './level1.component.html',
   styleUrls: ['./level1.component.scss'],
 })
