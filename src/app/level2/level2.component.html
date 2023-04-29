@@ -3,7 +3,10 @@
   <div>counter: {{counter}}</div>
 
   <form>
-    <app-custom-input [(ngModel)]="inputValue" name="level2InputValue"></app-custom-input>
+    <app-custom-input #custominput="ngModel" [(ngModel)]="inputValue" name="level2InputValue"></app-custom-input>
     <div>parent value: {{inputValue}}</div>
   </form>
+
+  <div style="margin-top: 10px">Control-Value:</div>
+  <pre>{{custominput.control.value | json}}</pre>
 </div>

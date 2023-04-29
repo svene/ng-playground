@@ -20,7 +20,7 @@ import {FormsModule, ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/for
   ],
 })
 export class CustomInputComponent implements ControlValueAccessor {
-  val = '';
+  val = 'xxxxx';
 
   set value(v: string) {
     if (v !== undefined && this.value !== v) {
@@ -39,7 +39,6 @@ export class CustomInputComponent implements ControlValueAccessor {
 
   writeValue(value: any) {
     this.value = value;
-    // this.onChange(value);
   }
 
   registerOnChange(fn: any) {
