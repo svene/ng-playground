@@ -1,4 +1,8 @@
 <div class="level2">
   <div>Level 2</div>
   <div>counter: {{counter}}</div>
+
+  <form [formGroup]="myForm">
+    <app-custom-input formControlName="myControl"></app-custom-input>
+  </form>
 </div>
