@@ -2,7 +2,8 @@
   <div>Level 2</div>
   <div>counter: {{counter}}</div>
 
-  <form [formGroup]="myForm">
-    <app-custom-input formControlName="myControl"></app-custom-input>
+  <form>
+    <app-custom-input [(ngModel)]="inputValue" name="level2InputValue"></app-custom-input>
+    <div>parent value: {{inputValue}}</div>
   </form>
 </div>
