@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Child1Component} from "./child1/child1.component";
 
 @Component({
@@ -12,4 +12,7 @@ import {Child1Component} from "./child1/child1.component";
 })
 export class AppComponent {
   title = 'ng15';
+  name: string = 'John';
+  age: number = 19;
+
 }

@@ -1,3 +1,7 @@
-<div>Hello from {{title}}</div>
+<h1>Application</h1>
+<span style="font-weight: bold">Person: </span>
+<span>{{name}}, {{age}}</span>
 
-<app-child1></app-child1>
+<hr>
+<app-child1 [name]="name" [age]="age"></app-child1>
+<hr>

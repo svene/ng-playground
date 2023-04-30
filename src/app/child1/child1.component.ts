@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,5 +8,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './child1.component.html',
 })
 export class Child1Component {
+
+  @Input()
+  name: string = '';
+
+  @Input()
+  age: number = 0;
 
 }
