@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import { format } from 'date-fns';
 import {Child1Component} from "./child1/child1.component";
 
 @Component({
@@ -14,5 +15,11 @@ export class AppComponent {
   title = 'ng15';
   name: string = 'John';
   age: number = 19;
+  counter = 0;
 
+  changeValues() {
+    const dateString = format(Date.now(), "HH:mm:ss");
+    this.name = `name_${dateString}`;
+    this.age = new Date().getSeconds();
+  }
 }

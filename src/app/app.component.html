@@ -1,6 +1,9 @@
 <h1>Application</h1>
 <span style="font-weight: bold">Person: </span>
 <span>{{name}}, {{age}}</span>
+<div>
+  <button type="button" (click)="changeValues()">Change values</button>
+</div>
 
 <hr>
 <app-child1 [name]="name" [age]="age"></app-child1>
