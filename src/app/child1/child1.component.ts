@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './child1.component.html',
 })
-export class Child1Component implements OnInit, OnChanges {
+export class Child1Component implements OnChanges {
 
   @Input()
   name: string = '';
@@ -17,11 +17,6 @@ export class Child1Component implements OnInit, OnChanges {
 
   // combined = `${this.name}, ${this.age}`; // not working like this !
   combined = '';
-
-  ngOnInit(): void {
-    // 'combined' needs to be initialized like here and not at property definition:
-    this.combined = this.buildCombined(); // BUT: will never change when inputs change
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['name']) {
