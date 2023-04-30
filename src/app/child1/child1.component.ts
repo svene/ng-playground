@@ -16,7 +16,7 @@ export class Child1Component implements OnInit, OnChanges {
   age: number = 0;
 
   // combined = `${this.name}, ${this.age}`; // not working like this !
-  combined = ''; // not working like this !
+  combined = '';
 
   ngOnInit(): void {
     // 'combined' needs to be initialized like here and not at property definition:
@@ -25,11 +25,11 @@ export class Child1Component implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['name']) {
-      console.log(`name changed to ${this.name}`);
+      console.log(`1: name changed to ${this.name}`);
       this.combined = this.buildCombined();
     }
     if (changes['age']) {
-      console.log(`age changed to ${this.age}`);
+      console.log(`1: age changed to ${this.age}`);
       this.combined = this.buildCombined();
     }
   }
