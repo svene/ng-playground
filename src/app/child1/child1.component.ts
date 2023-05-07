@@ -6,6 +6,17 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {filter, map, switchMap, tap} from "rxjs/operators";
 import {z} from "zod";
 
+const schema = z.array(
+  z.object({
+    id: z.number(),
+    firstName: z.string(),
+    lastName: z.string(),
+    bla: z.string().optional(),
+  }),
+);
+
+type Result =  z.infer<typeof schema>;
+
 @Component({
   selector: 'app-child1',
   standalone: true,
@@ -16,18 +27,11 @@ import {z} from "zod";
 export class Child1Component implements OnInit {
 
   private http = inject(HttpClient);
-  apiResponse$!: Observable<unknown>;
+  apiResponse$!: Observable<Result>;
 
   requestApiCall$$ = new BehaviorSubject(0);
   requestApiCall$ = this.requestApiCall$$.asObservable();
 
-  schema = z.array(
-    z.object({
-      id: z.number(),
-      firstName: z.string(),
-      lastName: z.string(),
-    }),
-  );
 
   callAPI(): void {
     this.requestApiCall$$.next(1);
@@ -40,7 +44,13 @@ export class Child1Component implements OnInit {
         return this.http.get<string>('https://thronesapi.com/api/v2/Characters');
       }),
       tap(it => console.log(it)),
-      map(it => this.schema.parse(it)),
+      map(it => {
+        if (schema.safeParse(it)) {
+          return schema.parse(it);
+        } else {
+          return [];
+        }
+      }),
       tap(it => console.log(it)),
     );
   }
