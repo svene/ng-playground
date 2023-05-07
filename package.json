@@ -22,7 +22,8 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0",
     "@baloise/design-system-components-angular": "13.0.0",
-    "@baloise/design-system-icons": "13.0.0"
+    "@baloise/design-system-icons": "13.0.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.6",

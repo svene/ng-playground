@@ -2,7 +2,9 @@ import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BaloiseDesignSystemModule} from "@baloise/design-system-components-angular";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {BehaviorSubject, filter, Observable, switchMap} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
+import {filter, map, switchMap, tap} from "rxjs/operators";
+import {z} from "zod";
 
 @Component({
   selector: 'app-child1',
@@ -19,6 +21,14 @@ export class Child1Component implements OnInit {
   requestApiCall$$ = new BehaviorSubject(0);
   requestApiCall$ = this.requestApiCall$$.asObservable();
 
+  schema = z.array(
+    z.object({
+      id: z.number(),
+      firstName: z.string(),
+      lastName: z.string(),
+    }),
+  );
+
   callAPI(): void {
     this.requestApiCall$$.next(1);
   }
@@ -26,7 +36,12 @@ export class Child1Component implements OnInit {
   ngOnInit(): void {
     this.apiResponse$ = this.requestApiCall$.pipe(
       filter(it => it > 0),
-      switchMap(_ => this.http.get<string>('https://thronesapi.com/api/v2/Characters')),
+      switchMap(_ => {
+        return this.http.get<string>('https://thronesapi.com/api/v2/Characters');
+      }),
+      tap(it => console.log(it)),
+      map(it => this.schema.parse(it)),
+      tap(it => console.log(it)),
     );
   }
 }
